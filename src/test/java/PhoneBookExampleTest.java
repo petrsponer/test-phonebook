@@ -1,16 +1,22 @@
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+
+import java.io.*;
+import java.net.URISyntaxException;
 
 public class PhoneBookExampleTest {
 
     private static final String COMMANDS_STRING = "list\nexit\n";
 
+    @Before
+    public void prepTestData() throws URISyntaxException, IOException {
+        PhoneBook.resetPhoneBook();
+    }
+
     @Test
-    public void mainTest(){
+    public void mainTest() {
         InputStream stdin = System.in;
         System.setIn(new ByteArrayInputStream(COMMANDS_STRING.getBytes()));
 

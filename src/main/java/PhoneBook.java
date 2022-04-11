@@ -1,3 +1,5 @@
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -7,6 +9,15 @@ import java.util.regex.Pattern;
 public class PhoneBook {
 
     private static final String CSV_STORAGE_PATH = "phone_book.csv";
+    private static final String CSV_STORAGE_EXAMPLE_PATH = "phone_book_example.csv";
+
+    public static void resetPhoneBook() throws URISyntaxException, IOException {
+        FileUtils.copyFile(new File(PhoneBook.class.getClassLoader()
+                .getResource(CSV_STORAGE_EXAMPLE_PATH)
+                .toURI()), new File(PhoneBook.class.getClassLoader()
+                .getResource(CSV_STORAGE_PATH)
+                .toURI()));
+    }
 
     private static void saveContacts(Map<String, List<String>> contacts) {
         try (PrintWriter writer = new PrintWriter(new File(PhoneBook.class.getClassLoader()
@@ -45,7 +56,7 @@ public class PhoneBook {
                 }
             }
 
-        } catch (IOException | URISyntaxException ioex) {
+        } catch (IOException | URISyntaxException e) {
             System.err.println("Could not load contacts, phone book is empty!");
         }
     }
@@ -175,6 +186,11 @@ public class PhoneBook {
         System.out.println("PHONE BOOK");
         System.out.println("===========================");
         System.out.println("Type a command or 'exit' to quit:");
+        try {
+            resetPhoneBook();
+        } catch (URISyntaxException | IOException e) {
+            throw new RuntimeException(e);
+        }
         listCommands();
         System.out.print("> ");
 
