@@ -55,7 +55,6 @@ public class PhoneBook {
         System.out.println("search - finds a contact by name");
         System.out.println("add - saves a new contact entry into the phone book");
         System.out.println("remove - removes a contact from the phone book");
-        System.out.println("---------------------------");
     }
 
     private static void listAllContacts(Map<String, List<String>> contacts) {
