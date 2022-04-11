@@ -14,6 +14,7 @@ Type a command or 'exit' to quit:
 * search - search for a contact by name
 * add - add a new contact entry into the phone book
 * remove - removes a contact from the phone book 
+* reset - reset the phonebook to initial state stored in phone_book_example.csv
 * exit - quit app
 
 Phone Book app test
@@ -22,3 +23,5 @@ Phone Book app test
 Run with:
 
 > mvn test
+
+Each run of the test perform phonebook reset to the initial state stored in phone_book_example.csv

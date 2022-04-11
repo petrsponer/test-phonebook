@@ -186,11 +186,7 @@ public class PhoneBook {
         System.out.println("PHONE BOOK");
         System.out.println("===========================");
         System.out.println("Type a command or 'exit' to quit:");
-        try {
-            resetPhoneBook();
-        } catch (URISyntaxException | IOException e) {
-            throw new RuntimeException(e);
-        }
+
         listCommands();
         System.out.print("> ");
 
@@ -214,6 +210,13 @@ public class PhoneBook {
                     break;
                 case "remove":
                     removeContact(contacts, input);
+                    break;
+                case "reset":
+                    try {
+                        resetPhoneBook();
+                    } catch (URISyntaxException | IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     break;
                 default:
                     System.out.println("Invalid command!");
