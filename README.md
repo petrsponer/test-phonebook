@@ -17,7 +17,7 @@ Type a command or 'exit' to quit:
 * reset - reset the phonebook to initial state stored in phone_book_example.csv
 * exit - quit app
 
-Phone Book app test
+Phone Book app automated tests
 ---------------
 
 Run with:
